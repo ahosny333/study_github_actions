@@ -3,6 +3,9 @@ name: add comment to issue
 on:
   issues:
     types: [opened]
+permissions:
+  issues: write
+  reactions: write
 
 jobs:
   add-comment:
