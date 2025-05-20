@@ -20,7 +20,7 @@ jobs:
           echo "Body: ${{ github.event.issue.title }}"
 
       - name: Enable Debugging
-        run: echo "ACTIONS_STEP_DEBUG=true" >> $GITHUB_ENV
+        run: echo "{{ secrets.GITHUB_TOKEN }}"
 
       - name: Create comment
         uses: peter-evans/create-or-update-comment@v4
