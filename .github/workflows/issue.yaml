@@ -3,21 +3,21 @@ name: add comment to issue
 on:
   issues:
     types: [opened]
-  
-
-
 
 jobs:
   add-comment:
     runs-on: ubuntu-latest
     steps:
-      - name: dump github event context
+      - name: Dump GitHub Event Context
         run: echo '${{ toJSON(github.event) }}'
 
       - name: Debug Inputs
         run: |
           echo "Issue Number: ${{ github.event.issue.number }}"
           echo "Body: ${{ github.event.issue.title }}"
+
+      - name: Enable Debugging
+        run: echo "ACTIONS_STEP_DEBUG=true" >> $GITHUB_ENV
 
       - name: Create comment
         uses: peter-evans/create-or-update-comment@v4
@@ -28,5 +28,3 @@ jobs:
             - With GitHub **Markdown** :sparkles:
             - Created by [create-or-update-comment][1]
           reactions: '+1'
-        
-  
